@@ -57,6 +57,17 @@ export default function Footer() {
           © {new Date().getFullYear()} {site.brandName}. Todos os direitos
           reservados.
         </p>
+        <p className="flex items-center gap-1.5 text-xs text-ink/40">
+          desenvolvido por
+          <Image
+            src="/images/rabbit-logo.png"
+            alt="Rabbit"
+            width={80}
+            height={22}
+            unoptimized
+            className="h-4 w-auto object-contain"
+          />
+        </p>
       </div>
     </footer>
   );
