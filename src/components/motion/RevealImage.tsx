@@ -19,7 +19,7 @@ export default function RevealImage({
 
   return (
     <div ref={wrapRef} className={wrapperClassName} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>
-      <div ref={mediaRef} className="h-full w-full">
+      <div ref={mediaRef} className="relative h-full w-full">
         <Image {...imgProps} />
       </div>
     </div>

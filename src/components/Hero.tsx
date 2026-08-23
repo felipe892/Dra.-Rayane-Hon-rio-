@@ -92,6 +92,7 @@ export default function Hero() {
           src="/images/fundo-rosto.png"
           alt=""
           fill
+          priority
           sizes="360px"
           className="object-cover"
         />
@@ -135,6 +136,7 @@ export default function Hero() {
               width={200}
               height={200}
               unoptimized
+              priority
               className="h-20 w-20 object-contain sm:h-24 sm:w-24"
             />
           </div>
