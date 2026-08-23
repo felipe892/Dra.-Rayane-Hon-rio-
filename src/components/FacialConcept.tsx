@@ -5,10 +5,22 @@ import Image from "next/image";
 import { ensureGsap, prefersReducedMotion } from "@/lib/scrollFx";
 
 const concepts = [
-  { label: "Perfil", pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-full pb-6 items-center text-center" },
-  { label: "Contorno", pos: "top-1/2 right-0 translate-x-full -translate-y-1/2 pl-6 items-start text-left" },
-  { label: "Proporção", pos: "bottom-0 left-1/2 -translate-x-1/2 translate-y-full pt-6 items-center text-center" },
-  { label: "Naturalidade", pos: "top-1/2 left-0 -translate-x-full -translate-y-1/2 pr-6 items-end text-right" },
+  {
+    label: "Perfil",
+    pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-full pb-4 md:pb-6 items-center text-center",
+  },
+  {
+    label: "Contorno",
+    pos: "top-1/2 right-2 md:right-0 -translate-y-1/2 md:translate-x-full pl-1 md:pl-6 items-start text-left",
+  },
+  {
+    label: "Proporção",
+    pos: "bottom-0 left-1/2 -translate-x-1/2 translate-y-full pt-4 md:pt-6 items-center text-center",
+  },
+  {
+    label: "Naturalidade",
+    pos: "top-1/2 left-2 md:left-0 -translate-y-1/2 md:-translate-x-full pr-1 md:pr-6 items-end text-right",
+  },
 ];
 
 export default function FacialConcept() {
@@ -128,7 +140,7 @@ export default function FacialConcept() {
           {concepts.map((c, i) => (
             <div
               key={c.label}
-              className={`pointer-events-none absolute flex w-40 flex-col ${c.pos}`}
+              className={`pointer-events-none absolute flex w-24 flex-col sm:w-32 md:w-40 ${c.pos}`}
             >
               <div
                 ref={(el) => {
@@ -143,7 +155,7 @@ export default function FacialConcept() {
                   }}
                   className="mb-2 block h-px w-8 origin-left scale-x-0 bg-gold"
                 />
-                <span className="font-serif text-xl text-cream sm:text-2xl">{c.label}</span>
+                <span className="font-serif text-base text-cream sm:text-xl md:text-2xl">{c.label}</span>
               </div>
             </div>
           ))}

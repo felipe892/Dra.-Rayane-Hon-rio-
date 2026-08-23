@@ -75,7 +75,7 @@ export default function About() {
               À frente do {site.legalName}, ela une precisão técnica e
               sensibilidade estética para entregar resultados naturais em
               harmonização facial — respeitando as proporções únicas de
-              cada paciente, em {site.city}.
+              cada paciente.
             </p>
             <ul className="mt-8 space-y-4 text-sm text-ink/70">
               <li className="flex items-start gap-3">

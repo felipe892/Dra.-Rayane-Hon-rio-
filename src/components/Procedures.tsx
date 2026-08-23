@@ -131,7 +131,7 @@ export default function Procedures() {
           {procedures.map((proc, i) => (
             <article
               key={proc.id}
-              className="w-[78vw] shrink-0 snap-start"
+              className="w-[78vw] shrink-0 snap-start [scroll-snap-stop:always]"
             >
               <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
