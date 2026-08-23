@@ -61,11 +61,11 @@ export default function Footer() {
           desenvolvido por
           <Image
             src="/images/rabbit-logo.png"
-            alt="Rabbit"
-            width={80}
-            height={22}
+            alt="Rabbit Assessoria"
+            width={833}
+            height={225}
             unoptimized
-            className="h-4 w-auto object-contain"
+            className="h-5 w-auto object-contain"
           />
         </p>
       </div>
