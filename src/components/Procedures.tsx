@@ -47,6 +47,8 @@ const procedures = [
 export default function Procedures() {
   const pinWrapRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const mobileStripRef = useRef<HTMLDivElement>(null);
+  const mobileCardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
@@ -62,6 +64,29 @@ export default function Procedures() {
     });
 
     return () => mm.revert();
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const strip = mobileStripRef.current;
+    const cards = mobileCardRefs.current.filter((el): el is HTMLDivElement => el !== null);
+    if (!strip || !cards.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const active = entry.intersectionRatio > 0.62;
+          entry.target.classList.toggle("scale-100", active);
+          entry.target.classList.toggle("opacity-100", active);
+          entry.target.classList.toggle("scale-[0.94]", !active);
+          entry.target.classList.toggle("opacity-60", !active);
+        });
+      },
+      { root: strip, threshold: [0, 0.62, 1] },
+    );
+
+    cards.forEach((card) => io.observe(card));
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -127,28 +152,38 @@ export default function Procedures() {
         <p className="px-6 text-xs uppercase tracking-[0.2em] text-ink/40">
           Arraste para ver mais
         </p>
-        <div className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div
+          ref={mobileStripRef}
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {procedures.map((proc, i) => (
             <article
               key={proc.id}
               className="w-[78vw] shrink-0 snap-start [scroll-snap-stop:always]"
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden">
-                <Image
-                  src={proc.image}
-                  alt={proc.title}
-                  fill
-                  sizes="80vw"
-                  className="object-cover"
-                />
+              <div
+                ref={(el) => {
+                  mobileCardRefs.current[i] = el;
+                }}
+                className="scale-[0.94] opacity-60 transition-[transform,opacity] duration-500 ease-out"
+              >
+                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                  <Image
+                    src={proc.image}
+                    alt={proc.title}
+                    fill
+                    sizes="80vw"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="mt-3 block text-xs text-gold-dark">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-serif text-2xl text-ink">{proc.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-ink/65">
+                  {proc.description}
+                </p>
               </div>
-              <span className="mt-3 block text-xs text-gold-dark">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="font-serif text-2xl text-ink">{proc.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-ink/65">
-                {proc.description}
-              </p>
             </article>
           ))}
         </div>

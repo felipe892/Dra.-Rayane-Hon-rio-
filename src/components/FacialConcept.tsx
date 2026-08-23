@@ -11,7 +11,7 @@ const concepts = [
   },
   {
     label: "Contorno",
-    pos: "top-1/2 right-2 md:right-0 -translate-y-1/2 md:translate-x-full pl-1 md:pl-6 items-start text-left",
+    pos: "top-1/2 left-full -translate-y-1/2 ml-1.5 sm:ml-4 md:ml-6 items-start text-left",
   },
   {
     label: "Proporção",
@@ -19,7 +19,7 @@ const concepts = [
   },
   {
     label: "Naturalidade",
-    pos: "top-1/2 left-2 md:left-0 -translate-y-1/2 md:-translate-x-full pr-1 md:pr-6 items-end text-right",
+    pos: "top-1/2 right-full -translate-y-1/2 mr-1.5 sm:mr-4 md:mr-6 items-end text-right",
   },
 ];
 
@@ -125,7 +125,7 @@ export default function FacialConcept() {
           02 &nbsp;/&nbsp; A linguagem da harmonização
         </span>
 
-        <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:max-w-sm">
+        <div className="relative mx-auto aspect-square w-full max-w-[170px] sm:max-w-sm">
           <div ref={imageRef} className="relative h-full w-full overflow-hidden rounded-full">
             <Image
               src="/images/sculptural-3d.jpg"
@@ -140,7 +140,7 @@ export default function FacialConcept() {
           {concepts.map((c, i) => (
             <div
               key={c.label}
-              className={`pointer-events-none absolute flex w-24 flex-col sm:w-32 md:w-40 ${c.pos}`}
+              className={`pointer-events-none absolute flex w-20 flex-col sm:w-32 md:w-40 ${c.pos}`}
             >
               <div
                 ref={(el) => {
@@ -155,7 +155,7 @@ export default function FacialConcept() {
                   }}
                   className="mb-2 block h-px w-8 origin-left scale-x-0 bg-gold"
                 />
-                <span className="font-serif text-base text-cream sm:text-xl md:text-2xl">{c.label}</span>
+                <span className="font-serif text-sm text-cream sm:text-xl md:text-2xl">{c.label}</span>
               </div>
             </div>
           ))}
