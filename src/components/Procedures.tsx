@@ -154,7 +154,7 @@ export default function Procedures() {
         </p>
         <div
           ref={mobileStripRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-8 [scroll-padding-inline:1.5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {procedures.map((proc, i) => (
             <article
